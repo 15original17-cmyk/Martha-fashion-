@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF9"/>
+      <stop offset="50%" stop-color="#FFF8F0"/>
+      <stop offset="100%" stop-color="#F5EFEB"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5D77F"/>
+      <stop offset="35%" stop-color="#D4AF37"/>
+      <stop offset="70%" stop-color="#C9A86A"/>
+      <stop offset="100%" stop-color="#997520"/>
+    </linearGradient>
+    <linearGradient id="goldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5D77F"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#A67C1E"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#8C7335" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="512" height="512" rx="100" fill="url(#bgGrad)"/>
+
+  <!-- Outer Luxury Gold Ring -->
+  <circle cx="256" cy="256" r="210" fill="none" stroke="url(#goldBorder)" stroke-width="4" stroke-opacity="0.6"/>
+  <circle cx="256" cy="256" r="200" fill="none" stroke="url(#goldBorder)" stroke-width="1.5" stroke-dasharray="4 6" stroke-opacity="0.8"/>
+
+  <!-- Center Medallion -->
+  <circle cx="256" cy="256" r="176" fill="url(#bgGrad)" filter="url(#shadow)"/>
+  <circle cx="256" cy="256" r="176" fill="none" stroke="url(#goldBorder)" stroke-width="3"/>
+
+  <!-- Gold Monogram M -->
+  <g fill="url(#goldGrad)">
+    <!-- Serif stylized Letter M -->
+    <path d="M 160 340 L 160 172 L 188 172 L 256 278 L 324 172 L 352 172 L 352 340 L 322 340 L 322 216 L 268 300 L 244 300 L 190 216 L 190 340 Z"/>
+    <!-- Serifs on M legs -->
+    <rect x="148" y="336" width="38" height="6" rx="2"/>
+    <rect x="326" y="336" width="38" height="6" rx="2"/>
+    <rect x="148" y="170" width="30" height="6" rx="2"/>
+    <rect x="334" y="170" width="30" height="6" rx="2"/>
+    <!-- Top Crown Accent -->
+    <polygon points="256,134 266,152 246,152"/>
+    <circle cx="256" cy="126" r="4"/>
+    <circle cx="236" cy="132" r="3"/>
+    <circle cx="276" cy="132" r="3"/>
+  </g>
+
+  <!-- Subtitle Text -->
+  <text x="256" y="380" font-family="'Cinzel', Georgia, serif" font-size="20" font-weight="700" letter-spacing="6" fill="#8C7335" text-anchor="middle">MARTHA</text>
+  <text x="256" y="400" font-family="'Cinzel', Georgia, serif" font-size="12" font-weight="600" letter-spacing="4" fill="#C9A86A" text-anchor="middle">FASHION</text>
+</svg>

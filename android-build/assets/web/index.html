@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Martha Fashion — L'élégance qui vous ressemble</title>
+    <meta name="description" content="MARTHA FASHION - Maison de couture et créations de mode à Djagblé. Découvrez nos collections femme, homme, enfant et sur-mesure." />
+    <meta property="og:title" content="Martha Fashion — L'élégance qui vous ressemble" />
+    <meta property="og:description" content="Maison de couture et créations de mode à Djagblé. Commandez directement sur WhatsApp." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#FFFBF5" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="MarthaFashion" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      // Clear any legacy Service Worker or obsolete cache immediately
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(regs) {
+          regs.forEach(function(r) { r.unregister(); });
+        });
+      }
+      if ('caches' in window) {
+        caches.keys().then(function(keys) {
+          keys.forEach(function(k) { caches.delete(k); });
+        });
+      }
+    </script>
+    <script type="module" crossorigin src="./assets/index-Dm_NTCDL.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BVlNHpQ-.css">
+  </head>
+  <body style="background-color: #FFFBF5; color: #1A1A1A; margin: 0; padding: 0;" class="bg-[#FFFBF5] text-[#1A1A1A] antialiased selection:bg-[#D4AF37] selection:text-[#1A1A1A]">
+    <div id="root">
+      <!-- Écran d'accueil immédiat anti-écran blanc Martha Fashion -->
+      <div id="martha-splash" style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: #FFFBF5; color: #1A1A1A; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; padding: 24px; text-align: center;">
+        <div style="width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, #AA820A, #D4AF37, #F5D77F); display: flex; align-items: center; justify-content: center; color: #1A1A1A; font-weight: 900; font-family: 'Cinzel', serif; font-size: 28px; box-shadow: 0 10px 25px rgba(212,175,55,0.3); margin-bottom: 20px;">
+          M
+        </div>
+        <h1 style="font-family: 'Cinzel', serif; font-size: 24px; font-weight: 800; letter-spacing: 0.1em; color: #1A1A1A; margin: 0 0 6px 0;">
+          MARTHA FASHION
+        </h1>
+        <p style="font-size: 13px; color: #AA820A; font-style: italic; margin: 0 0 24px 0;">
+          « L'élégance qui vous ressemble »
+        </p>
+
+        <!-- Indicateur de chargement doré -->
+        <div id="martha-loader" style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+          <div style="width: 32px; height: 32px; border: 3px solid #EBDCD0; border-top: 3px solid #D4AF37; border-radius: 50%; animation: martha-spin 0.8s linear infinite;"></div>
+          <span style="font-size: 11px; color: #7A726B; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600;">Chargement de votre boutique...</span>
+        </div>
+
+        <!-- Boîte d'erreur avec bouton Réessayer (affichée en cas d'erreur JS ou blocage) -->
+        <div id="martha-error-box" style="display: none; max-width: 360px; background: #FFFFFF; border: 1px solid #D4AF37; border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); margin-top: 20px;">
+          <div style="font-size: 14px; font-weight: 700; color: #997520; margin-bottom: 8px;">Démarrage de l'application</div>
+          <p id="martha-error-msg" style="font-size: 12px; color: #6B655F; line-height: 1.5; margin: 0 0 16px 0;">
+            Le chargement des données locales a rencontré une difficulté.
+          </p>
+          <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+            <button onclick="window.location.reload()" style="background: linear-gradient(135deg, #D4AF37, #F5D77F); color: #1A1A1A; border: none; font-weight: 700; font-size: 13px; padding: 10px 24px; border-radius: 9999px; cursor: pointer; box-shadow: 0 4px 15px rgba(212,175,55,0.35);">
+              Réessayer
+            </button>
+            <button onclick="localStorage.clear(); window.location.reload()" style="background: #FFFFFF; color: #7A726B; border: 1px solid #EBDCD0; font-weight: 600; font-size: 11px; padding: 9px 16px; border-radius: 9999px; cursor: pointer;">
+              Réinitialiser
+            </button>
+          </div>
+        </div>
+      </div>
+      <style>@keyframes martha-spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}</style>
+    </div>
+
+    <script>
+      // Détecteur de secours anti-écran blanc
+      window.addEventListener('error', function(e) {
+        var errBox = document.getElementById('martha-error-box');
+        var loader = document.getElementById('martha-loader');
+        var errMsg = document.getElementById('martha-error-msg');
+        if (errBox) errBox.style.display = 'block';
+        if (loader) loader.style.display = 'none';
+        if (errMsg && e && e.message) errMsg.textContent = "Erreur de démarrage : " + e.message;
+      });
+      setTimeout(function() {
+        var splash = document.getElementById('martha-splash');
+        var errBox = document.getElementById('martha-error-box');
+        var loader = document.getElementById('martha-loader');
+        if (splash && errBox && errBox.style.display === 'none') {
+          errBox.style.display = 'block';
+          if (loader) loader.style.display = 'none';
+        }
+      }, 5000);
+    </script>
+  </body>
+</html>

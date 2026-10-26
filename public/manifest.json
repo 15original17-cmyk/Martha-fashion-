@@ -1,0 +1,46 @@
+{
+  "name": "Martha Fashion",
+  "short_name": "MarthaFashion",
+  "id": "com.marthafashion.app",
+  "packageId": "com.marthafashion.app",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FFFBF5",
+  "theme_color": "#D4AF37",
+  "description": "Maison de haute couture et créations africaines de luxe à Djagblé. Vêtements femme, homme, enfant et confection sur-mesure.",
+  "orientation": "portrait-primary",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Catalogue Créations",
+      "short_name": "Catalogue",
+      "description": "Découvrir nos créations de mode",
+      "url": "/#catalogue",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Commander sur WhatsApp",
+      "short_name": "WhatsApp",
+      "description": "Passer commande directement sur WhatsApp",
+      "url": "/#commande",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "prefer_related_applications": false,
+  "categories": ["shopping", "lifestyle"]
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.marthafashion.app",
+      "sha256_cert_fingerprints": [
+        "69:92:84:F7:2C:F0:6D:FC:0A:44:D6:22:6D:7C:DF:0F:26:8A:50:AE:93:1B:1C:70:60:B8:1C:BF:F7:79:D6:BD"
+      ]
+    }
+  }
+]

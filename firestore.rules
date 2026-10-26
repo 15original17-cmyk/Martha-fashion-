@@ -1,0 +1,122 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper Primitives
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+        (request.auth.token.email != null && (
+          request.auth.token.email == 'sodoga59@gmail.com' ||
+          request.auth.token.email.matches('.*@marthafashion\\.com$')
+        ))
+      );
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Test connection document
+    match /test/{testId} {
+      allow read: if true;
+    }
+
+    // Admins Collection: protected metadata
+    match /admins/{adminUid} {
+      allow read: if isSignedIn() && (request.auth.uid == adminUid || isAdmin());
+      allow write: if isSignedIn() && (
+        request.auth.token.email == 'sodoga59@gmail.com' ||
+        (request.auth.token.email != null && request.auth.token.email.matches('.*@marthafashion\\.com$')) ||
+        isAdmin()
+      );
+    }
+
+    // Validation functions
+    function isValidProduct(data) {
+      return data.nom is string && data.nom.size() > 0 && data.nom.size() <= 200 &&
+             data.prix is number && data.prix >= 0 &&
+             data.categorie is string && data.categorie.size() > 0 && data.categorie.size() <= 100 &&
+             data.disponible is bool &&
+             (!('description' in data) || (data.description is string && data.description.size() <= 2000)) &&
+             (!('photos' in data) || (data.photos is list && data.photos.size() <= 20)) &&
+             (!('tailles' in data) || (data.tailles is list && data.tailles.size() <= 20)) &&
+             (!('couleurs' in data) || (data.couleurs is list && data.couleurs.size() <= 20));
+    }
+
+    // Products Collection
+    match /products/{productId} {
+      allow read: if true;
+      allow create: if isValidId(productId) && isAdmin() && isValidProduct(incoming());
+      allow update: if isValidId(productId) && isAdmin() && isValidProduct(incoming());
+      allow delete: if isValidId(productId) && isAdmin();
+    }
+
+    // Categories Collection
+    function isValidCategory(data) {
+      return data.nom is string && data.nom.size() > 0 && data.nom.size() <= 100 &&
+             data.slug is string && data.slug.size() > 0 && data.slug.size() <= 100;
+    }
+
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow create: if isValidId(categoryId) && isAdmin() && isValidCategory(incoming());
+      allow update: if isValidId(categoryId) && isAdmin() && isValidCategory(incoming());
+      allow delete: if isValidId(categoryId) && isAdmin();
+    }
+
+    // Store Settings
+    function isValidSettings(data) {
+      return data.nom_boutique is string && data.nom_boutique.size() > 0 && data.nom_boutique.size() <= 150 &&
+             data.whatsapp is string && data.whatsapp.size() > 0 && data.whatsapp.size() <= 50;
+    }
+
+    match /settings/{settingId} {
+      allow read: if true;
+      allow create, update: if isValidId(settingId) && isAdmin() && isValidSettings(incoming());
+      allow delete: if false;
+    }
+
+    // Orders Collection
+    function isValidOrder(data) {
+      return data.numero_commande is string && data.numero_commande.size() > 0 && data.numero_commande.size() <= 64 &&
+             data.nom_client is string && data.nom_client.size() > 0 && data.nom_client.size() <= 150 &&
+             data.telephone is string && data.telephone.size() > 0 && data.telephone.size() <= 50 &&
+             data.produit is string && data.produit.size() > 0 && data.produit.size() <= 300 &&
+             data.quantite is number && data.quantite > 0 &&
+             data.prix is number && data.prix >= 0 &&
+             data.statut is string && data.statut.size() <= 64;
+    }
+
+    match /orders/{orderId} {
+      allow get: if isValidId(orderId) && (
+        isAdmin() ||
+        (isSignedIn() && resource.data.customerUid == request.auth.uid)
+      );
+      allow list: if isAdmin() || (isSignedIn() && resource.data.customerUid == request.auth.uid);
+      allow create: if isValidId(orderId) && isValidOrder(incoming()) && (
+        !('customerUid' in incoming()) ||
+        incoming().customerUid == null ||
+        (isSignedIn() && incoming().customerUid == request.auth.uid)
+      );
+      allow update: if isValidId(orderId) && isAdmin() && isValidOrder(incoming());
+      allow delete: if isValidId(orderId) && isAdmin();
+    }
+  }
+}

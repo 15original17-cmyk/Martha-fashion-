@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="luxe_bg">#FFFBF5</color>
+    <color name="luxe_card">#FFFFFF</color>
+    <color name="gold_primary">#D4AF37</color>
+    <color name="gold_light">#F5D77F</color>
+    <color name="text_main">#1A1A1A</color>
+    <color name="noir_bg">#FFFBF5</color>
+    <color name="noir_card">#FFFFFF</color>
+</resources>

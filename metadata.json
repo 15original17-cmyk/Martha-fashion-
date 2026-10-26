@@ -1,0 +1,8 @@
+{
+  "name": "Martha Fashion Mode",
+  "description": "Boutique de prêt-à-porter chic en FCFA avec styliste personnel IA et analyse intelligente de tenues par Gemini.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

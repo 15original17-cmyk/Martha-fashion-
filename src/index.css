@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg-luxe: #FFFBF5;
+  --color-bg-alt: #FFF8F0;
+  --color-card-luxe: #FFFFFF;
+  --color-border-luxe: #EBDCD0;
+  --color-border-subtle: #F3EAE1;
+  --color-text-main: #1A1A1A;
+  --color-text-muted: #6B655F;
+  --color-gold: #D4AF37;
+  --color-gold-light: #F5D77F;
+  --color-gold-dark: #C9A86A;
+  --color-gold-soft: rgba(212, 175, 55, 0.12);
+  --color-shadow-luxe: rgba(180, 140, 75, 0.08);
+}
+
+body {
+  background-color: var(--color-bg-alt);
+  color: var(--color-text-main);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+/* Luxury Brand Typography */
+.font-brand {
+  font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+  letter-spacing: 0.08em;
+}
+
+.font-serif-luxury {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Gold Gradient Accents */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #B58A2A 0%, #D4AF37 50%, #8C6818 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #D4AF37 0%, #F5D77F 50%, #C9A86A 100%);
+}
+
+.gold-gradient-btn {
+  background: linear-gradient(135deg, #D4AF37 0%, #F5D77F 50%, #C9A86A 100%);
+  color: #1A1A1A;
+  font-weight: 700;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.28);
+}
+
+.gold-gradient-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.38);
+}
+
+.gold-gradient-btn:active {
+  transform: translateY(1px);
+}
+
+.gold-outline-btn {
+  background: #FFFFFF;
+  color: #1A1A1A;
+  border: 1.5px solid #D4AF37;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 10px rgba(212, 175, 55, 0.1);
+}
+
+.gold-outline-btn:hover {
+  background: #FFFDF9;
+  border-color: #C9A86A;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.2);
+}
+
+.gold-border {
+  border-color: #EBDCD0;
+}
+
+.gold-border-glow {
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.1);
+}
+
+/* Card Luxe */
+.card-luxe {
+  background: #FFFFFF;
+  border: 1px solid #EBDCD0;
+  box-shadow: 0 4px 20px rgba(60, 40, 20, 0.05);
+}
+
+/* WhatsApp White Button with Gold / Green border */
+.whatsapp-btn {
+  background: #FFFFFF;
+  color: #1A1A1A;
+  border: 1.5px solid #D4AF37;
+  box-shadow: 0 2px 12px rgba(212, 175, 55, 0.12);
+  transition: all 0.2s ease;
+}
+
+.whatsapp-btn:hover {
+  background: #FDFBF7;
+  border-color: #C9A86A;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.22);
+}
+
+.whatsapp-btn:active {
+  transform: scale(0.98);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF8F0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E0D3C5;
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 16px);
+}
+
+/* ========================================================
+   MARTHA FASHION — AFFICHAGE COMPLET DES PHOTOS (ANTI-CROP)
+   Conforme aux exigences : object-fit contain, object-position center,
+   proportions respectées, mannequin et vêtement visibles à 100%.
+   ======================================================== */
+.product-image,
+.product-detail-image,
+.product-card-image,
+img.product-image,
+img.product-detail-image,
+img.product-card-image {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+
+.product-image-container,
+.product-detail-image-container,
+.product-card-image-container {
+  width: 100% !important;
+  overflow: hidden !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  background-color: #F7F2EC !important;
+}
+
+.product-detail-image-container {
+  position: relative !important;
+  min-height: 280px;
+}
+
+@media (min-width: 640px) {
+  .product-detail-image-container {
+    min-height: 380px;
+  }
+}
+
+.product-card-image-container {
+  position: relative !important;
+  aspect-ratio: 3/4 !important;
+}

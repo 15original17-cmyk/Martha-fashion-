@@ -1,0 +1,117 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Article de mode Martha Fashion avec photos, tailles et prix en FCFA",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "nom": { "type": "string", "maxLength": 200 },
+        "description": { "type": "string", "maxLength": 2000 },
+        "prix": { "type": "number" },
+        "categorie": { "type": "string", "maxLength": 100 },
+        "photos": { "type": "array", "description": "Liste des URLs Cloud Storage des photos" },
+        "tailles": { "type": "array", "description": "Tailles disponibles pour l'article" },
+        "couleurs": { "type": "array", "description": "Couleurs disponibles pour l'article" },
+        "disponible": { "type": "boolean" },
+        "populaire": { "type": "boolean" },
+        "nouveau": { "type": "boolean" },
+        "promo": { "type": "boolean" },
+        "date_creation": { "type": "string", "maxLength": 64 },
+        "date_modification": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["nom", "prix", "categorie", "disponible"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Commande passée par une cliente Martha Fashion",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "numero_commande": { "type": "string", "maxLength": 64 },
+        "nom_client": { "type": "string", "maxLength": 150 },
+        "telephone": { "type": "string", "maxLength": 50 },
+        "produit": { "type": "string", "maxLength": 300 },
+        "taille": { "type": "string", "maxLength": 50 },
+        "couleur": { "type": "string", "maxLength": 50 },
+        "quantite": { "type": "number" },
+        "prix": { "type": "number" },
+        "lieu": { "type": "string", "maxLength": 250 },
+        "message": { "type": "string", "maxLength": 1000 },
+        "statut": {
+          "type": "string",
+          "enum": [
+            "Nouvelle",
+            "Confirmée",
+            "Terminée",
+            "Annulée",
+            "En attente d'envoi (Hors-ligne)",
+            "Transmise via WhatsApp"
+          ]
+        },
+        "date_commande": { "type": "string", "maxLength": 64 },
+        "customerUid": { "type": "string", "maxLength": 128 }
+      },
+      "required": ["numero_commande", "nom_client", "telephone", "produit", "quantite", "prix", "statut"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Catégorie de vêtement dans la boutique Martha Fashion",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "nom": { "type": "string", "maxLength": 100 },
+        "slug": { "type": "string", "maxLength": 100 },
+        "image": { "type": "string", "maxLength": 1000 }
+      },
+      "required": ["nom", "slug"]
+    },
+    "StoreSettings": {
+      "title": "StoreSettings",
+      "description": "Paramètres et coordonnées officielles de la boutique Martha Fashion",
+      "type": "object",
+      "properties": {
+        "nom_boutique": { "type": "string", "maxLength": 150 },
+        "slogan": { "type": "string", "maxLength": 250 },
+        "logo": { "type": "string", "maxLength": 1000 },
+        "whatsapp": { "type": "string", "maxLength": 50 },
+        "telephone": { "type": "string", "maxLength": 50 },
+        "localisation": { "type": "string", "maxLength": 250 }
+      },
+      "required": ["nom_boutique", "whatsapp", "telephone"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "Compte administrateur autorisé pour Martha Fashion",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "maxLength": 150 },
+        "role": { "type": "string", "maxLength": 50 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Catalogue public des vêtements et créations Martha Fashion"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Commandes passées par les clientes et gérées par l'administration"
+    },
+    "/categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Catégories de confection et prêt-à-porter"
+    },
+    "/settings/{settingId}": {
+      "schema": "StoreSettings",
+      "description": "Configuration publique de la boutique Martha Fashion"
+    },
+    "/admins/{adminUid}": {
+      "schema": "Admin",
+      "description": "Liste des UIDs des comptes autorisés comme administrateurs"
+    }
+  }
+}
